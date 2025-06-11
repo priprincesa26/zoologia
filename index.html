@@ -13,10 +13,10 @@
             --header-height: 80px; --sidebar-width: 280px;
         }
         [data-theme="dark"] { --primary-l: 65%; --secondary-l: 22%; --accent-l: 65%; --text-l: 90%; --bg-l: 12%; --card-l: 16%; --pattern-opacity: 0.04; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: var(--background-tint); color: var(--text-color); transition: all 0.4s ease; min-height: 100vh; display: grid; grid-template-areas: "header header" "main main"; grid-template-columns: 1fr; grid-template-rows: var(--header-height) 1fr; position: relative; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; background-color: var(--background-tint); color: var(--text-color); transition: all 0.4s ease; min-height: 100vh; display: grid; grid-template-areas: "header header" "main main"; grid-template-columns: 1fr; grid-template-rows: auto 1fr; position: relative; overflow-x: hidden; }
         .background-icons { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; color: var(--pattern-color); opacity: var(--pattern-opacity); overflow: hidden; pointer-events: none; transition: opacity 0.4s ease, color 0.4s ease; }
         .background-icons i { position: absolute; color: inherit; } .background-icons i:nth-child(1){top:5%;left:5%;font-size:6rem;transform:rotate(-15deg)} .background-icons i:nth-child(2){top:15%;right:10%;font-size:4rem;transform:rotate(25deg)} .background-icons i:nth-child(3){top:40%;left:40%;font-size:8rem;transform:rotate(-5deg)} .background-icons i:nth-child(4){bottom:10%;left:2%;font-size:5rem;transform:rotate(10deg)} .background-icons i:nth-child(5){bottom:25%;right:15%;font-size:7rem;transform:rotate(-20deg)} .background-icons i:nth-child(6){top:60%;left:12%;font-size:3rem;transform:rotate(30deg)} .background-icons i:nth-child(7){top:8%;left:55%;font-size:4.5rem;transform:rotate(-10deg)} .background-icons i:nth-child(8){bottom:5%;right:40%;font-size:9rem;transform:rotate(5deg)} .background-icons i:nth-child(9){top:30%;left:75%;font-size:3.5rem;transform:rotate(15deg)} .background-icons i:nth-child(10){top:75%;left:60%;font-size:6.5rem;transform:rotate(-25deg)} .background-icons i:nth-child(11){bottom:45%;left:25%;font-size:4rem;transform:rotate(0deg)} .background-icons i:nth-child(12){top:80%;right:5%;font-size:10rem;transform:rotate(12deg)} .background-icons i:nth-child(13){top:2%;right:30%;font-size:3rem;transform:rotate(-8deg)}
-        header { grid-area: header; background-color: var(--primary-color); display: grid; grid-template-columns: auto 1fr auto; align-items: center; padding: 0 25px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); z-index: 100; transition: background-color 0.4s ease; height: var(--header-height); box-sizing: border-box; }
+        header { grid-area: header; background-color: var(--primary-color); display: grid; grid-template-columns: auto 1fr auto; align-items: center; padding: 0 25px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); z-index: 100; transition: all 0.4s ease; height: var(--header-height); box-sizing: border-box; }
         .header-left { display: flex; align-items: center; gap: 15px; }
         .menu-toggle { background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer; padding: 10px; }
         .header-left .handle-link { color: white; text-decoration: none; font-weight: 700; font-size: 1.1rem; animation: pulse 3s infinite ease-in-out; display: inline-block; }
@@ -28,14 +28,14 @@
         .toggle-container { display: flex; align-items: center; gap: 10px; } .toggle-label { font-size: 0.9rem; color: white; } .toggle-switch { position: relative; display: inline-block; width: 50px; height: 26px; } .toggle-switch input { opacity: 0; width: 0; height: 0; }
         .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; } .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--accent-color); } input:checked + .slider:before { transform: translateX(24px); }
-        aside { position: fixed; top: 0; left: 0; background-color: color-mix(in srgb, var(--card-color), transparent 5%); backdrop-filter: blur(8px); padding: 30px 20px; box-shadow: 2px 0 15px rgba(0,0,0,0.1); height: 100vh; overflow-y: auto; transition: transform 0.4s ease-in-out; z-index: 200; width: var(--sidebar-width); transform: translateX(-100%); }
+        aside { position: fixed; top: 0; left: 0; background-color: color-mix(in srgb, var(--card-color), transparent 5%); backdrop-filter: blur(8px); padding: 30px 20px; box-shadow: 2px 0 15px rgba(0,0,0,0.1); height: 100vh; overflow-y: auto; transition: transform 0.4s ease-in-out; z-index: 200; width: var(--sidebar-width); transform: translateX(-100%); box-sizing: border-box; }
         aside.open { transform: translateX(0); }
         [data-theme="dark"] aside { background-color: color-mix(in srgb, var(--card-color), transparent 20%); }
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 150; opacity: 0; pointer-events: none; transition: opacity 0.4s ease; }
         .sidebar-overlay.open { opacity: 1; pointer-events: auto; }
         .nav-tabs { display: flex; flex-direction: column; gap: 8px; margin-top: var(--header-height); } .nav-tab { padding: 15px 20px; background-color: transparent; color: var(--text-color); border: none; border-radius: 8px; cursor: pointer; font-size: 1rem; text-align: left; transition: all 0.3s; display: flex; align-items: center; gap: 12px; }
         .nav-tab:hover { background-color: var(--secondary-color); } .nav-tab.active { background-color: var(--primary-color); color: white; font-weight: 600; } .nav-tab i { width: 20px; text-align: center; }
-        main { grid-area: main; padding: 40px; height: calc(100vh - var(--header-height)); overflow-y: auto; }
+        main { grid-area: main; padding: 40px; min-height: calc(100vh - var(--header-height)); overflow-y: auto; }
         .tab-content { display: none; height: 100%; } .tab-content.active { display: flex; flex-direction: column; animation: fadeIn 0.6s; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .phylum-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); gap: 30px; margin-top: 30px; }
         .phylum-card { background-color: color-mix(in srgb, var(--card-color), transparent 5%); backdrop-filter: blur(3px); border-radius: 12px; padding: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: all 0.3s ease; border-left: 4px solid var(--primary-color); cursor: pointer; }
@@ -59,7 +59,7 @@
         .phylum-dot .name { font-size: 1.2rem; font-weight: 600; text-align: center; color: var(--primary-color); }
         .phylum-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 1000; opacity: 0; transition: opacity 0.3s ease; }
         .phylum-modal.active { display: flex; opacity: 1; }
-        .modal-content { background-color: var(--card-color); color: var(--text-color); width: 90%; max-width: 950px; max-height: 90vh; padding: 30px 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; overflow-y: auto; animation: modal-fade-in 0.4s ease; }
+        .modal-content { background-color: var(--card-color); color: var(--text-color); width: 90%; max-width: 950px; max-height: 90vh; padding: 30px 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); position: relative; overflow-y: auto; animation: modal-fade-in 0.4s ease; box-sizing: border-box; }
         @keyframes modal-fade-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
         .modal-close-btn { position: absolute; top: 15px; right: 20px; background: none; border: none; font-size: 2rem; color: var(--text-color); cursor: pointer; opacity: 0.7; transition: opacity 0.2s; }
         .modal-close-btn:hover { opacity: 1; }
@@ -74,6 +74,144 @@
         
         .site-footer { position: fixed; bottom: 15px; right: 20px; font-size: 1rem; font-weight: 700; z-index: 999; color: var(--text-color); text-shadow: 0 0 5px var(--background-tint); pointer-events: none; }
         .site-footer .fa-heart { color: var(--primary-color); margin-left: 5px; }
+
+
+        /* --- INÍCIO DAS REGRAS DE RESPONSIVIDADE --- */
+
+        /* Ajustes para Telas de Tablet */
+        @media (max-width: 1024px) {
+            .phylum-grid {
+                grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            }
+            .classification-arena {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            .header-left .handle-link {
+                font-size: 1rem;
+            }
+        }
+
+        /* Ajustes para Telas de Celular */
+        @media (max-width: 768px) {
+            body {
+                grid-template-rows: auto 1fr; /* Altura do header se ajusta ao conteúdo */
+            }
+            
+            header {
+                height: auto;
+                padding: 10px 15px;
+                grid-template-columns: auto 1fr; /* Duas colunas para alinhar à esquerda e direita */
+                grid-template-rows: auto auto;   /* Duas linhas */
+                gap: 5px 10px;
+            }
+
+            .header-left {
+                grid-column: 1 / 2;
+                grid-row: 1 / 2;
+                gap: 10px;
+            }
+
+            .theme-controls {
+                grid-column: 2 / 3;
+                grid-row: 1 / 2;
+                gap: 15px;
+            }
+            
+            h1 {
+                grid-column: 1 / -1; /* Ocupa a largura toda */
+                grid-row: 2 / 3;    /* Fica na segunda linha */
+                font-size: 1.5rem;
+                padding: 5px 0;
+                text-align: center;
+            }
+            
+            aside {
+                width: 85vw; /* Sidebar ocupa mais espaço na tela */
+                max-width: 320px;
+            }
+            .nav-tabs {
+                margin-top: 110px; /* Mais espaço para o header maior */
+            }
+
+            main {
+                padding: 20px 15px;
+            }
+
+            .phylum-grid {
+                grid-template-columns: 1fr; /* Uma coluna só */
+                gap: 20px;
+            }
+            
+            .phylum-card {
+                padding: 25px 20px;
+            }
+            
+            .phylum-card h3 { font-size: 1.4rem; }
+            .phylum-card p { font-size: 1rem; }
+
+            .tab-content > h2 { font-size: 1.6rem; }
+            .subtitle { font-size: 1rem; }
+
+            .phylum-dot {
+                width: 130px;
+                height: 80px;
+            }
+            .phylum-dot .name { font-size: 1.1rem; }
+            
+            .modal-content {
+                width: 95vw;
+                max-height: 85vh;
+                padding: 25px 20px;
+            }
+
+            /* Chave para tabelas responsivas: permite scroll horizontal */
+            .modal-content table {
+                display: block;
+                width: 100%;
+                overflow-x: auto;
+                white-space: nowrap; /* Impede que o texto quebre linha dentro das células */
+            }
+
+            .modal-content h2 { font-size: 1.4rem; }
+            .modal-content h3 { font-size: 1.2rem; }
+            
+            .site-footer {
+                font-size: 0.8rem;
+                bottom: 10px;
+                right: 10px;
+                background-color: color-mix(in srgb, var(--background-tint), transparent 20%);
+                padding: 3px 8px;
+                border-radius: 5px;
+                pointer-events: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-left .handle-link {
+                display: none; /* Esconde o @ do twitter para ganhar espaço */
+            }
+            .color-palette {
+                gap: 5px;
+            }
+            .color-option {
+                width: 24px;
+                height: 24px;
+            }
+            .toggle-label {
+                display: none; /* Esconde o texto "Modo Escuro" */
+            }
+            .theme-controls {
+                gap: 10px;
+            }
+            .classification-controls button {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+        }
+        /* --- FIM DAS REGRAS DE RESPONSIVIDADE --- */
     </style>
 </head>
 <body>
@@ -246,5 +384,7 @@
             const diseaseCards = document.querySelectorAll('.disease-card'); diseaseCards.forEach(card => card.addEventListener('click', () => { const diseaseName = card.dataset.disease; let content; switch(diseaseName) { case 'esquistossomose': content = getEsquistossomoseContent(); break; case 'teniase-cisticercose': content = getTeniaseCisticercoseContent(); break; case 'ascaridiase': content = getAscaridiaseContent(); break; case 'amarelao': content = getAmarelaoContent(); break; case 'bicho-geografico': content = getBichoGeograficoContent(); break; case 'enterobiose': content = getEnterobioseContent(); break; case 'filariose': content = getFilarioseContent(); break; default: content = `<h2>${diseaseName}</h2><p>Ficha em construção.</p>`; } openModal(content); }));
         });
     </script>
+</body>
+</html>
 </body>
 </html>
